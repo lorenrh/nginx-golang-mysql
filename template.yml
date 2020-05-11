@@ -1,0 +1,25 @@
+apiVersion: v1alpha1
+kind: ApplicationTemplate
+metadata:
+  creationTimestamp: "0001-01-01T00:00:00Z"
+  labels:
+    httpCheck: Blog post
+  name: nginx-golang-mysql
+  platforms:
+  - linux
+spec:
+  description: Sample Golang application with an Nginx proxy and a MySQL database
+  services:
+  - name: back
+    serviceId: golang
+    source:
+      image: docker.io/dockertemplatedev/golang:223f90d2849e484bf4cfac3731886c3f3dbae665
+  - name: db
+    serviceId: mysql
+    source:
+      image: docker.io/dockertemplatedev/mysql:223f90d2849e484bf4cfac3731886c3f3dbae665
+  - name: proxy
+    serviceId: nginx
+    source:
+      image: docker.io/dockertemplatedev/nginx:223f90d2849e484bf4cfac3731886c3f3dbae665
+  title: Go / NGINX / MySQL application
